@@ -16,10 +16,10 @@ public class XeBus {
     private int soghe;
 
     public XeBus(String hangxe, int namsanxuat, float dongco, int soghe) {
-        this.hangxe = hangxe;
-        this.namsanxuat = namsanxuat;
-        this.dongco = dongco;
-        this.soghe = soghe;
+        this.setHangxe(hangxe);
+        this.setNamsanxuat(namsanxuat);
+        this.setDongco(dongco);
+        this.setSoghe(soghe);
     }
 
     public String getHangxe() {
@@ -68,7 +68,16 @@ public class XeBus {
 
     @Override
     public String toString() {
-        return "XeBus{" + "hangxe=" + hangxe + ", namsanxuat=" + namsanxuat + ", dongco=" + dongco + ", soghe=" + soghe + '}';
+        if (namsanxuat <= 2024 || namsanxuat >= 1886) {
+            return "XeBus{" + "hangxe=" + hangxe + ", dongco=" + dongco + ", soghe=" + soghe + '}';
+        } else if (dongco >= 1200 || dongco <= 20) {
+            return "XeBus{" + "hangxe=" + hangxe + ", namsanxuat=" + namsanxuat + ", soghe=" + soghe + '}';
+        } else if (soghe <= 1 || soghe >= 60) {
+            return "XeBus{" + "hangxe=" + hangxe + ", namsanxuat=" + namsanxuat + ", dongco=" + dongco + '}';
+        } else {
+            return "XeBus{" + "hangxe=" + hangxe + ", namsanxuat=" + namsanxuat + ", dongco=" + dongco + ", soghe=" + soghe + '}';
+
+        }
     }
 
 }
