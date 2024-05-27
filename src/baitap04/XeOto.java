@@ -9,14 +9,15 @@ package baitap04;
  * @author lakeh
  */
 public class XeOto {
+
     private String hangxe;
     private int namsanxuat;
     private float dongco;
 
     public XeOto(String hangxe, int namsanxuat, float dongco) {
-        this.hangxe = hangxe;
-        this.namsanxuat = namsanxuat;
-        this.dongco = dongco;
+        this.setHangxe(hangxe);
+        this.setNamsanxuat(namsanxuat);
+        this.setDongco(dongco);
     }
 
     public String getHangxe() {
@@ -32,7 +33,11 @@ public class XeOto {
     }
 
     public void setNamsanxuat(int namsanxuat) {
-        this.namsanxuat = namsanxuat;
+        if (namsanxuat <= 2024 || namsanxuat >= 1886) {
+            System.out.println(namsanxuat + "khong hop le");
+        } else {
+            this.namsanxuat = namsanxuat;
+        }
     }
 
     public float getDongco() {
@@ -40,14 +45,22 @@ public class XeOto {
     }
 
     public void setDongco(float dongco) {
-        this.dongco = dongco;
+        if (dongco >= 1200 || dongco <= 20) {
+            System.out.println(dongco + "Khong hop le");
+        } else {
+            this.dongco = dongco;
+        }
     }
 
     @Override
     public String toString() {
+        if (namsanxuat <= 2024 || namsanxuat >= 1886) {
+            return "XeOto{" + "hangxe=" + hangxe + ", dongco=" + dongco + '}';
+        } else if (dongco >= 1200 || dongco <= 20) {
+            return "XeOto{" + "hangxe=" + hangxe + ", namsanxuat=" + namsanxuat + '}';
+        } else {
         return "XeOto{" + "hangxe=" + hangxe + ", namsanxuat=" + namsanxuat + ", dongco=" + dongco + '}';
+        }
     }
-    
-    
-    
+
 }

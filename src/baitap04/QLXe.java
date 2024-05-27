@@ -10,7 +10,7 @@ package baitap04;
  */
 public class QLXe {
     public static void main(String[] args) {
-    XeOto oto = new XeOto("Vinfast", 2020, 500);
+    XeOto oto = new XeOto("Vinfast", 2025, 500);
     
     System.out.println(oto);
 
