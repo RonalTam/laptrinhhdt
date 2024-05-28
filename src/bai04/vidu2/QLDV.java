@@ -2,18 +2,18 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package bai04.vidu1;
+package bai04.vidu2;
 
 /**
  *
  * @author lakeh
  */
-public class QLNS {
+public class QLDV {
     public static void main(String[] args) {
-        SinhVien sv = new SinhVien("ThanhTam", 2005, "ITA01", "NgonNguTrung");
-        GiangVien gv = new GiangVien("Nguyen A", 1899, "GV001", "Ths", "CNTT");
+        Tho khongphaimeo = new Tho("Tho gi","Tho DitDo", 5, "Duc", "Den", 20);
+        Meo khongphaitho = new Meo("MeoTamThe", "Meo3mau", 2, "Cai", "Vang", 5);
         
-        System.out.println(sv);
-        System.out.println(gv);
+        System.out.println(khongphaimeo);
+        System.out.println(khongphaitho);
     }
 }

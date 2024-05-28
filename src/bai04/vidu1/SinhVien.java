@@ -9,13 +9,14 @@ package bai04.vidu1;
  * @author lakeh
  */
 public class SinhVien extends Nguoi {
+
     private String masoSV;
     private String nganhhoc;
 
     public SinhVien(String hoten, int namsinh, String masoSV, String nganhhoc) {
         super(hoten, namsinh);
-        this.masoSV = masoSV;
-        this.nganhhoc = nganhhoc;
+        this.setMasoSV(masoSV);
+        this.setNganhhoc(nganhhoc);
     }
 
     public String getMasoSV() {
@@ -23,7 +24,11 @@ public class SinhVien extends Nguoi {
     }
 
     public void setMasoSV(String masoSV) {
-        this.masoSV = masoSV;
+        if (masoSV.isEmpty()) {
+            System.out.println("Ma sinh vien rong");
+        } else {
+            this.masoSV = masoSV;
+        }
     }
 
     public String getNganhhoc() {
@@ -36,15 +41,8 @@ public class SinhVien extends Nguoi {
 
     @Override
     public String toString() {
-        return "SinhVien{" + super.toString() + "masoSV= " + masoSV + ", nganhhoc= " + nganhhoc +" " + '}'; // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/OverriddenMethodBody
+        return "SinhVien{" + super.toString() + "masoSV= " + masoSV 
+                + ", nganhhoc= " + nganhhoc + " " + '}'; // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/OverriddenMethodBody
     }
 
-    
-
-    
-    
-
-    
-    
-    
 }
