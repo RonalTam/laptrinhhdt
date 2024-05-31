@@ -9,6 +9,7 @@ package bai05.baitap;
  * @author lakeh
  */
 public class PhuThuy extends NhanVat {
+
     private boolean choi;
     private boolean gay;
 
@@ -36,7 +37,7 @@ public class PhuThuy extends NhanVat {
 
     @Override
     public String toString() {
-        return "PhuThuy{"+ super.toString() + "choi=" + choi + ", gay=" + gay + '}';
+        return "PhuThuy{" + super.toString() + "choi=" + choi + ", gay=" + gay + '}';
     }
 
     @Override
@@ -47,8 +48,11 @@ public class PhuThuy extends NhanVat {
 
     @Override
     public void hanhdong() {
-        System.out.println("Nem cay choi");
+        if (choi == true) {
+            System.out.println("Nem cay choi");
+        } else {
+            System.out.println("Nem cay gay");
+        }
     }
-    
-    
+
 }

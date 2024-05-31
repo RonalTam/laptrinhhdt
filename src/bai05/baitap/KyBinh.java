@@ -9,6 +9,7 @@ package bai05.baitap;
  * @author lakeh
  */
 public class KyBinh extends NhanVat {
+
     private boolean guom;
     private boolean giao;
     private boolean ngua;
@@ -52,13 +53,16 @@ public class KyBinh extends NhanVat {
 
     @Override
     public void hanhdong() {
-        System.out.println("Cuoi ngua ban ten");
+        if (guom == true) {
+            System.out.println("Cuoi ngua dung guom");
+        } else {
+            System.out.println("Cuoi ngua cam giao");
+        }
     }
 
     @Override
     public String toString() {
         return "KyBinh{" + super.toString() + "guom=" + guom + ", giao=" + giao + ", ngua=" + ngua + '}';
     }
-    
-    
+
 }
