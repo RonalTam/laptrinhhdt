@@ -9,6 +9,7 @@ package bai07;
  * @author lakeh
  */
 public class NhanVat {
+
     private String ten;
     private String id;
     private byte gioitinh;
@@ -53,10 +54,17 @@ public class NhanVat {
         this.nangluong = nangluong;
     }
 
+    public void hanhdong() {
+        System.out.println("........");
+    }
+
+    public void sucmanh() {
+        System.out.println(".........");
+    }
+
     @Override
     public String toString() {
         return "NhanVat{" + "ten=" + ten + ", id=" + id + ", gioitinh=" + gioitinh + ", nangluong=" + nangluong + '}';
     }
-    
-    
+
 }

@@ -45,6 +45,16 @@ public class KyBinh extends NhanVat implements DiChuyen {
     }
 
     @Override
+    public void sucmanh(){
+        System.out.println(".....KyBinh SucManh.......");
+    }
+    
+    @Override
+    public void hanhdong(){
+        System.out.println(".....KyBinh HanhDOng.......");
+    }
+    
+    @Override
     public String toString() {
         return "KyBinh{" + "guom=" + guom + ", giao=" + giao + ", ngua=" + ngua + super.toString() + '}';
     }

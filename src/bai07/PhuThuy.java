@@ -8,7 +8,7 @@ package bai07;
  *
  * @author lakeh
  */
-public class PhuThuy extends NhanVat {
+public class PhuThuy extends NhanVat implements DiChuyen{
     private boolean choi;
     private boolean gay;
 
@@ -33,10 +33,40 @@ public class PhuThuy extends NhanVat {
     public void setGay(boolean gay) {
         this.gay = gay;
     }
+    
+    @Override
+    public void sucmanh(){
+        System.out.println(".....PhuThuy SucManh.......");
+    }
+    
+    @Override
+    public void hanhdong(){
+        System.out.println(".....PhuThuy HanhDOng.......");
+    }
 
     @Override
     public String toString() {
         return "PhuThuy{" + "choi=" + choi + ", gay=" + gay + super.toString() + '}';
+    }
+
+    @Override
+    public void sangPhai() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public void sangTrai() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public void nhayLen() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public void bochay() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
 }
