@@ -11,6 +11,7 @@ import java.util.List;
  * @author lakeh
  */
 public class PhuThuy extends NhanVat {
+
     private boolean giap;
 
     public PhuThuy(boolean giap, String tennhanvat, int level, VuKhi vk) {
@@ -22,8 +23,6 @@ public class PhuThuy extends NhanVat {
         super(tennhanvat, level);
         this.giap = giap;
     }
-    
-    
 
     public boolean isGiap() {
         return giap;
@@ -35,10 +34,8 @@ public class PhuThuy extends NhanVat {
 
     @Override
     public String toString() {
-        return super.toString(); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/OverriddenMethodBody
+        return super.toString() + "PhuThuy{" + "giap=" + giap + '}';
     }
-
-    
 
     @Override
     public void tanCong() {
@@ -49,8 +46,5 @@ public class PhuThuy extends NhanVat {
     public void diChuyen() {
         System.out.println("Phu Thuy Di Chuyen");
     }
-    
-    
-    
-    
+
 }

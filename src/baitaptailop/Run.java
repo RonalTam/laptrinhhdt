@@ -24,7 +24,7 @@ import java.util.function.Predicate;
  */
 public class Run {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws CloneNotSupportedException {
         VuKhi vk1 = new CungTen(350, 500);
         VuKhi vk2 = new Choi(500, 250);
         List<NhanVat> dsnv = new ArrayList<NhanVat>();
@@ -70,14 +70,14 @@ public class Run {
         for (NhanVat nhanVat : dsnv) {
             System.out.println(nhanVat);
         }
-        
+
         Predicate<NhanVat> dk_nv = new Predicate<NhanVat>() {
             @Override
             public boolean test(NhanVat t) {
                 return t.getLevel() <= 15 && t.getLevel() >= 3;
             }
         };
-        
+
         List<NhanVat> lknv = dsnv.stream()
                 .filter(dk_nv)
                 .toList();
@@ -86,7 +86,26 @@ public class Run {
         for (NhanVat nhanVat : lknv) {
             System.out.println(nhanVat);
         }
+
+        BinhDoan bd1 = new BinhDoan(1, 500);
+        BinhDoan bd2 = new BinhDoan(2, 1500);
+
+        kb1.addBinhDoan(bd1);
+        kb2.addBinhDoan(bd1);
+        kb3.addBinhDoan(bd2);
+        kb4.addBinhDoan(bd2);
+
+        System.out.println("");
+        System.out.println("Add binh doan cho kybinh");
+        for (NhanVat nhanVat : dsnv) {
+            System.out.println(nhanVat);
+        }
         
-        BinhDoan db = new  BinhDoan(20, 500);
+        System.out.println("");
+        DoiQuan dq = new DoiQuan(1);
+        dq.addBinhDoan(bd2);
+        dq.addBinhDoan(bd1);
+        System.out.println(dq);
+
     }
 }

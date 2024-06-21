@@ -1,35 +1,29 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package baitaptailop.model;
 
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- *
- * @author lakeh
- */
 public class KyBinh extends NhanVat {
 
     private boolean giap;
     private boolean ngua;
-    private List<BinhDoan> dsbd = new ArrayList<BinhDoan>();
+    private List<BinhDoan> dsbd;
 
     public KyBinh(boolean giap, boolean ngua, String tennhanvat, int level, VuKhi vk) {
         super(tennhanvat, level, vk);
         this.giap = giap;
         this.ngua = ngua;
+        this.dsbd = new ArrayList<>(); // Initialize the list
     }
 
     public KyBinh(boolean giap, boolean ngua, String tennhanvat, int level) {
         super(tennhanvat, level);
         this.giap = giap;
         this.ngua = ngua;
+        this.dsbd = new ArrayList<>(); // Initialize the list
     }
 
-    public void addBinhDoan(BinhDoan bd) throws CloneNotSupportedException{
+    public void addBinhDoan(BinhDoan bd) throws CloneNotSupportedException {
         this.dsbd.add((BinhDoan) bd.clone());
     }
 
@@ -64,20 +58,15 @@ public class KyBinh extends NhanVat {
 
     @Override
     public void diChuyen() {
-        System.out.println("Ky Binh Di CHuyen");
+        System.out.println("Ky Binh Di Chuyen");
     }
 
     @Override
     public String toString() {
-        return super.toString(); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/OverriddenMethodBody
+        return super.toString() + "KyBinh{" + "giap=" + giap + ", ngua=" + ngua + ", dsbd=" + dsbd + '}';
     }
 
     
-    
-
-   
 
     
-    
-
 }

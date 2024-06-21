@@ -4,6 +4,7 @@
  */
 package baitaptailop.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -16,11 +17,12 @@ public class DoiQuan {
 
     public DoiQuan(int madq, List<BinhDoan> dsbd) {
         this.madq = madq;
-        this.dsbd = dsbd;
+        this.dsbd = new ArrayList<BinhDoan>();
     }
 
     public DoiQuan(int madq) {
         this.madq = madq;
+        this.dsbd = new ArrayList<BinhDoan>();
     }
     
     
