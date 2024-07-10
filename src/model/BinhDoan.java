@@ -4,10 +4,22 @@
  */
 package model;
 
+import java.util.List;
+
 /**
  *
  * @author lakeh
  */
 public class BinhDoan {
+    private List<KyBinh> dskb;
+
+    public BinhDoan(List<KyBinh> dskb) {
+        this.dskb = dskb;
+    }
+
+    public void addKyBinh(KyBinh kb) throws CloneNotSupportedException {
+        this.dskb.add((KyBinh) kb.clone());
+    }
+    
     
 }

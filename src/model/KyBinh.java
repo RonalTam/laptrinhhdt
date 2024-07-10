@@ -8,7 +8,7 @@ package model;
  *
  * @author lakeh
  */
-public class KyBinh extends NhanVat {
+public class KyBinh extends NhanVat implements Cloneable {
 
     private String kinhnghiem;
 
@@ -28,6 +28,11 @@ public class KyBinh extends NhanVat {
     @Override
     public String toString() {
         return super.toString() + "KyBinh{" + "kinhnghiem=" + kinhnghiem + '}';
+    }
+
+    @Override
+    protected Object clone() throws CloneNotSupportedException {
+        return super.clone(); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/OverriddenMethodBody
     }
 
     @Override
