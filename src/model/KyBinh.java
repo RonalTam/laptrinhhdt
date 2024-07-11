@@ -10,18 +10,18 @@ package model;
  */
 public class KyBinh extends NhanVat implements Cloneable {
 
-    private String kinhnghiem;
+    private int kinhnghiem;
 
-    public KyBinh(String ten, double nangluong, String phepthuat) {
+    public KyBinh(String ten, double nangluong, int kinhnghiem) {
         super(nangluong, ten);
-        this.kinhnghiem = phepthuat;
+        this.kinhnghiem = kinhnghiem;
     }
 
-    public String getKinhnghiem() {
+    public int getKinhnghiem() {
         return kinhnghiem;
     }
 
-    public void setKinhnghiem(String kinhnghiem) {
+    public void setKinhnghiem(int kinhnghiem) {
         this.kinhnghiem = kinhnghiem;
     }
 

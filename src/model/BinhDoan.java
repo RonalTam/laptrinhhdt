@@ -20,6 +20,19 @@ public class BinhDoan {
     public void addKyBinh(KyBinh kb) throws CloneNotSupportedException {
         this.dskb.add((KyBinh) kb.clone());
     }
+
+    public List<KyBinh> getDskb() {
+        return dskb;
+    }
+
+    public void setDskb(List<KyBinh> dskb) {
+        this.dskb = dskb;
+    }
+
+    @Override
+    public String toString() {
+        return "BinhDoan{" + "dskb=" + dskb + '}';
+    }
     
     
 }
