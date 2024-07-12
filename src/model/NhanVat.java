@@ -4,6 +4,7 @@
  */
 package model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -19,6 +20,8 @@ public class NhanVat implements DiChuyen {
     public NhanVat(double nangluong, String ten) {
         this.nangluong = nangluong;
         this.ten = ten;
+        this.dsvk = new ArrayList<VuKhi>();
+
     }
 
     public void addVuKhi(VuKhi vk) throws CloneNotSupportedException {

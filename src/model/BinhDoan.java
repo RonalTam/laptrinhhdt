@@ -1,20 +1,13 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package model;
 
+import java.util.ArrayList;
 import java.util.List;
 
-/**
- *
- * @author lakeh
- */
 public class BinhDoan {
     private List<KyBinh> dskb;
 
-    public BinhDoan(List<KyBinh> dskb) {
-        this.dskb = dskb;
+    public BinhDoan() {
+        this.dskb = new ArrayList<KyBinh>();
     }
 
     public void addKyBinh(KyBinh kb) throws CloneNotSupportedException {
@@ -34,5 +27,10 @@ public class BinhDoan {
         return "BinhDoan{" + "dskb=" + dskb + '}';
     }
     
-    
+    public void inDSKyBinh() {
+        System.out.println("------Danh sach BinhDoan-----");
+        for (KyBinh kyBinh : dskb) {
+            System.out.println(kyBinh);
+        }
+    }
 }
