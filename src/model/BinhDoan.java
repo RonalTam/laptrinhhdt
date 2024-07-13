@@ -26,11 +26,4 @@ public class BinhDoan {
     public String toString() {
         return "BinhDoan{" + "dskb=" + dskb + '}';
     }
-    
-    public void inDSKyBinh() {
-        System.out.println("------Danh sach BinhDoan-----");
-        for (KyBinh kyBinh : dskb) {
-            System.out.println(kyBinh);
-        }
-    }
 }

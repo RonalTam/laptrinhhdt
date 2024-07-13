@@ -3,17 +3,22 @@ package db;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.util.Scanner;
+
 
 public class DBConnection {
+        private static Scanner scanner = new Scanner(System.in);
 	private static DBConnection instance;
 	private Connection conn;
-	private String ipadd = "192.168.130.45";
+	private String ipadd;
 	private String port = "3306";
 	private String database = "quanlygame";
 	private String username = "root";
 	private String password = "@Dmin1234";
 	
 	private DBConnection() {
+            System.out.println("Nhap ip may ao:");
+            String ipadd = scanner.nextLine();
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			this.conn = DriverManager.getConnection("jdbc:mysql://" + ipadd + ":" +

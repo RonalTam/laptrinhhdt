@@ -8,6 +8,8 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Scanner;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
 import model.BinhDoan;
 import model.Choi;
 import model.CungTen;
@@ -73,6 +75,7 @@ public class Run {
                     System.out.println("1. Sap xep danh sach VuKhi theo so luong");
                     System.out.println("2. Sap xep danh sach NhanVat theo nang luong");
                     System.out.println("3. Sap xep danh sach cac KyBinh cua BinhDoan theo kinhnghiem");
+                    System.out.println("4. Thoat");
                     System.out.print("Lua chon cua ban: ");
                     int chon2 = scanner.nextInt();
                     scanner.nextLine();
@@ -87,6 +90,8 @@ public class Run {
                         case 3:
                             sapXepKyBinhBinhDoan();
                             break;
+                        case 4:
+                            continue;
                         default:
                             System.out.println("Lua chon khong hop le");
                     }
@@ -96,17 +101,23 @@ public class Run {
                     System.out.println("1. Tim kiem NhanVat theo ten");
                     System.out.println("2. Tim kiem NhanVat theo khoang nang luong");
                     System.out.println("3. Tim kiem KyBinh theo khoang nang luong va khoang kinh nghiem");
+                    System.out.println("4. Thoat");
                     System.out.print("Lua chon cua ban: ");
                     int chon3 = scanner.nextInt();
                     scanner.nextLine();
 
                     switch (chon3) {
                         case 1:
+                            searchNhanVatTheoTen();
                             break;
                         case 2:
+                            searchNhanVatTheoNL();
                             break;
                         case 3:
+                            searchKyBinh();
                             break;
+                        case 4:
+                            continue;
                         default:
                             System.out.println("Lua chon khong hop le");
                     }
@@ -247,12 +258,20 @@ public class Run {
             scanner.nextLine();
             switch (chon) {
                 case 1:
-                    for (NhanVat nv : dsnv) {
-                        if (nv instanceof KyBinh) {
-                            binhDoan.addKyBinh((KyBinh) nv);
+                    int td = 0;
+                    if (!dsnv.isEmpty()) {
+                        for (NhanVat nv : dsnv) {
+                            if (nv instanceof KyBinh) {
+                                binhDoan.addKyBinh((KyBinh) nv);
+                                td = 1;
+                            }
                         }
+                        System.out.println("Them thanh cong");
                     }
-                    System.out.println("Them thanh cong");
+                    if (td == 0) {
+                        System.out.println("Chua co KyBinh trong NhanVat");
+                    }
+
                     break;
                 case 2:
                     System.out.println("---Nhap du lieu cho KyBinh----");
@@ -273,6 +292,7 @@ public class Run {
                                 kb.addVuKhi(vk);
                             }
                         }
+                        binhDoan.addKyBinh((KyBinh) kb);
                         dsnv.add(kb);
                     }
                     break;
@@ -311,8 +331,8 @@ public class Run {
                     System.out.println("");
                     break;
                 case 3:
-                    binhDoan.inDSKyBinh();
-                    System.out.println("");
+                    System.out.println("-------Danh sach cac KyBinh cua BinhDoan--------");
+                    System.out.println(binhDoan);
                     break;
                 case 4:
                     return;
@@ -369,7 +389,88 @@ public class Run {
                 return Integer.compare(o1.getKinhnghiem(), o2.getKinhnghiem());
             }
         });
-        binhDoan.inDSKyBinh();
-        System.out.println("");
+        System.out.println(binhDoan);
     }
+
+    public static void searchNhanVatTheoTen() {
+        System.out.println("------ Tim kiem NhanVat theo ten -------");
+        System.out.println("Nhap ten NhanVat can tim:");
+        String tennv = scanner.nextLine().toLowerCase();
+
+        Predicate<NhanVat> dk_nv = nv -> {
+            String ten = nv.getTen().toLowerCase();
+            if (tennv.length() == 1) {
+                return ten.length() >= 1 && ten.charAt(0) == tennv.charAt(0);
+            } else if (tennv.length() == 2) {
+                return ten.length() >= 2 && ten.charAt(0) == tennv.charAt(0) && ten.charAt(1) == tennv.charAt(1);
+            } else {
+                return false;
+            }
+        };
+
+        List<NhanVat> ketQuaTimKiem = dsnv.stream()
+                .filter(dk_nv)
+                .collect(Collectors.toList());
+
+        if (ketQuaTimKiem.isEmpty()) {
+            System.out.println("Khong tim thay NhanVat co ten : " + tennv);
+        } else {
+            System.out.println("------ Danh sach NhanVat tim thay -----");
+            for (NhanVat nhanVat : ketQuaTimKiem) {
+                System.out.println(nhanVat);
+            }
+        }
+    }
+
+    public static void searchNhanVatTheoNL() {
+        System.out.println("--------- Tim kiem NhanVat theo nang luong --------");
+        System.out.println("Nhap khoang nang luong(batdau ketthuc)");
+        double nl_bd = scanner.nextDouble();
+        double nl_kt = scanner.nextDouble();
+        scanner.nextLine();
+        Predicate<NhanVat> dk_nl = nhanVat -> nhanVat.getNangluong() >= nl_bd
+                && nhanVat.getNangluong() <= nl_kt;
+
+        List<NhanVat> ketQuaTimKiem = dsnv.stream()
+                .filter(dk_nl)
+                .collect(Collectors.toList());
+        if (ketQuaTimKiem.isEmpty()) {
+            System.out.println("Khong tim thay NhanVat co khoang nang luong tu " + nl_bd + " den " + nl_kt);
+        } else {
+            System.out.println("Danh sach NhanVat co khoang nang luong tu " + nl_bd + " den " + nl_kt);
+            for (NhanVat nv : ketQuaTimKiem) {
+                System.out.println(nv);
+            }
+        }
+
+    }
+
+    public static void searchKyBinh() {
+        System.out.println("------ Tim kiem KyBinh theo khoang nang luong va khoang kinh nghiem -----");
+        System.out.println("Nhap khoang nang luong(batdau ketthuc)");
+        double nl_bd = scanner.nextDouble();
+        double nl_kt = scanner.nextDouble();
+        scanner.nextLine();
+        System.out.println("Nhap khoang kinh nghiem(batdau ketthuc)");
+        int kn_bd = scanner.nextInt();
+        int kn_kt = scanner.nextInt();
+        scanner.nextLine();
+        
+        Predicate<KyBinh> dk_nlkn = kb -> kb.getNangluong() >= nl_bd
+                && kb.getNangluong() <= nl_kt 
+                && kb.getKinhnghiem() >= kn_bd
+                && kb.getKinhnghiem() <= kn_kt;
+        
+        List<KyBinh> ketQuaTimKiem = binhDoan.getDskb().stream()
+                .filter(dk_nlkn).toList();
+        if (ketQuaTimKiem.isEmpty()) {
+            System.out.println("Khong tim thay KyBinh co khoang nang luong tu " + nl_bd + " den " + nl_kt + " kinh nghiem tu " + kn_bd + " den " + kn_kt);
+        } else {
+            System.out.println("Danh sach KyBinh co khoang nang luong tu " + nl_bd + " den " + nl_kt + " kinh nghiem tu " + kn_bd + " den " + kn_kt);
+            for (KyBinh nv : ketQuaTimKiem) {
+                System.out.println(nv);
+            }
+        }
+    }
+        
 }
