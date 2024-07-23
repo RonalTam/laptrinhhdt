@@ -18,7 +18,7 @@ import model.NhanVat;
 import model.PhuThuy;
 import model.VuKhi;
 
-public class Run {
+public class QuanLyGame {
 
     private static Scanner scanner = new Scanner(System.in);
     private static List<VuKhi> dsvk = new ArrayList<VuKhi>();
@@ -27,6 +27,11 @@ public class Run {
     private static NhanVat nhanVat;
 
     public static void main(String[] args) throws CloneNotSupportedException {
+        dsvk.add(new Choi("ChoiPhep", 4, 1200));
+        dsvk.add(new Choi("ChoiBay", 2, 1000));
+        dsvk.add(new CungTen("CungGo", 10, 1300));
+        dsvk.add(new CungTen("CungSat", 15, 1500));
+        
         menu();
     }
 
@@ -399,13 +404,16 @@ public class Run {
 
         Predicate<NhanVat> dk_nv = nv -> {
             String ten = nv.getTen().toLowerCase();
-            if (tennv.length() == 1) {
-                return ten.length() >= 1 && ten.charAt(0) == tennv.charAt(0);
-            } else if (tennv.length() == 2) {
-                return ten.length() >= 2 && ten.charAt(0) == tennv.charAt(0) && ten.charAt(1) == tennv.charAt(1);
-            } else {
+            if (tennv.length() <= ten.length()) {
+        for (int i = 0; i < tennv.length(); i++) {
+            if (ten.charAt(i) != tennv.charAt(i)) {
                 return false;
             }
+        }
+        return true;
+    } else {
+        return false;
+    }
         };
 
         List<NhanVat> ketQuaTimKiem = dsnv.stream()
@@ -455,12 +463,12 @@ public class Run {
         int kn_bd = scanner.nextInt();
         int kn_kt = scanner.nextInt();
         scanner.nextLine();
-        
+
         Predicate<KyBinh> dk_nlkn = kb -> kb.getNangluong() >= nl_bd
-                && kb.getNangluong() <= nl_kt 
+                && kb.getNangluong() <= nl_kt
                 && kb.getKinhnghiem() >= kn_bd
                 && kb.getKinhnghiem() <= kn_kt;
-        
+
         List<KyBinh> ketQuaTimKiem = binhDoan.getDskb().stream()
                 .filter(dk_nlkn).toList();
         if (ketQuaTimKiem.isEmpty()) {
@@ -472,5 +480,5 @@ public class Run {
             }
         }
     }
-        
+
 }
